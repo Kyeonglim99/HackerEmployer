@@ -1,0 +1,17 @@
+.retiree-container {
+  display: flex; /* 플렉스 박스로 설정하여 요소들을 가로로 나란히 배치 */
+}
+
+.retiree {
+  flex: 1; /* 자동으로 동일한 너비 할당 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+.month, .name {
+  margin-bottom: 10px; /* 항목 사이의 간격 조절 */
+}
+
+.retiree:not(:last-child) {
+  border-right: 2px solid black; /* 마지막 요소를 제외하고 오른쪽에 세로 수직선 그리기 */
+}
+

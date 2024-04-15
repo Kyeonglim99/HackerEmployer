@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tables</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <style>
+        table {
+            width: 100%; /* 테이블 전체 너비를 화면 너비에 맞춤 */
+            border-collapse: collapse; /* 셀 경계를 병합하여 한 줄로 표시 */
+        }
+        table td {
+            padding: 10px; /* 셀 안 여백을 줄임 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            vertical-align: middle; /* 텍스트 세로 중앙 정렬 */
+        }
+        img {
+            max-width: 100px; /* 최대 너비를 100px로 지정하여 이미지 크기 조절 */
+            height: auto; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Hi, theRE Employer</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Login Screens:</h6>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Business Information
+            </div>
+            <!-- Chatting -->
+            <li class="nav-item">
+                <a class="nav-link" href="chatting.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Communities</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Alert: We've exceeded your legal working hours.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                            problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how
+                                            would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I'm sending you a list of foreign worker interviewers for this week.</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Madison Jones</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">Distribution of foreign workers working in Korea. Based on this data, foreign worker statistics can be produced by accurately and in real-time.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Foreign Worker DataTables</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Work</th>
+                                            <th>Age</th>
+                                            <th>Country</th>
+                                            <th>Location</th>
+                                            <th>Monthly Pay</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Work</th>
+                                            <th>Age</th>
+                                            <th>Country</th>
+                                            <th>Location</th>
+                                            <th>Monthly Pay</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1682092093534-c16eb3ea13c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kaWFuJTIwbWFufGVufDB8fDB8fHww" class="profile-image"></td>
+                                            <td>Somchai</td>
+                                            <td>Planning and Design</td>
+                                            <td>54</td>
+                                            <td>Thailand</td>
+                                            <td>B2</td>
+                                            <td>$1,760</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1557862921-37829c790f19?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8JUVDJTlEJUI4JUVCJThGJTg0JTIwJUVCJTgyJUE4JUVDJTlFJTkwfGVufDB8fDB8fHww" class="profile-image"></td>
+                                            <td>Witthaya</td>
+                                            <td>Site Preparation</td>
+                                            <td>33</td>
+                                            <td>Thailand</td>
+                                            <td>B5</td>
+                                            <td>$2,237</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Aravx</td>
+                                            <td>Site Preparation</td>
+                                            <td>30</td>
+                                            <td>India</td>
+                                            <td>F3</td>
+                                            <td>$2,312</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1612983798058-e1020154ae64?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Vikram</td>
+                                            <td>Excavation and Earthwork</td>
+                                            <td>31</td>
+                                            <td>India</td>
+                                            <td>F4</td>
+                                            <td>$2,310</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1661774991416-ee14a1bc0d30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUVDJTk1JTg0JUVDJThCJTlDJUVDJTk1JTg0JTIwJUVCJTgyJUE4JUVDJTlFJTkwfGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Zhang Wei</td>
+                                            <td>Excavation and Earthwork</td>
+                                            <td>28</td>
+                                            <td>China</td>
+                                            <td>F1</td>
+                                            <td>$1,567</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1606633473849-bd477e343d97?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8JUVDJTk1JTg0JUVDJThCJTlDJUVDJTk1JTg0JTIwJUVCJTgyJUE4JUVDJTlFJTkwfGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Wang Wei</td>
+                                            <td>Foundation Construction</td>
+                                            <td>41</td>
+                                            <td>China</td>
+                                            <td>B2</td>
+                                            <td>$2,410</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1666860339130-ca977001324e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Wang Fang</td>
+                                            <td>Planning and Design</td>
+                                            <td>35</td>
+                                            <td>China</td>
+                                            <td>F5</td>
+                                            <td>$2,204</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1624461087264-3a68c1c60d40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Li Wei</td>
+                                            <td>MEP Works (Mechanical, Electrical, Plumbing)</td>
+                                            <td>39</td>
+                                            <td>China</td>
+                                            <td>B1</td>
+                                            <td>$2,017</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Li Qiang</td>
+                                            <td>Structural Construction</td>
+                                            <td>27</td>
+                                            <td>China</td>
+                                            <td>B1</td>
+                                            <td>$1,240</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1589088474071-0b5f16e4b42f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Sonya Frost</td>
+                                            <td>Finishing Works</td>
+                                            <td>31</td>
+                                            <td>Malaysia</td>
+                                            <td>F7</td>
+                                            <td>$1,579</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1653055645127-df05115dcccb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Ahmad</td>
+                                            <td>Structural Construction</td>
+                                            <td>23</td>
+                                            <td>Malaysia</td>
+                                            <td>B1</td>
+                                            <td>$1,739</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1637659424827-706f1e41b26a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTB8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Zhang Lei</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>28</td>
+                                            <td>China</td>
+                                            <td>F4</td>
+                                            <td>$2,614</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1649853644104-f88871103428?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODh8fCVFQyU5NSU4NCVFQyU4QiU5QyVFQyU5NSU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Nguyễn</td>
+                                            <td>Quality Control and Assurance</td>
+                                            <td>36</td>
+                                            <td>Vietnam</td>
+                                            <td>F7</td>
+                                            <td>$1,587</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1627199219038-e8263f729e3d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMyfHwlRUMlOTUlODQlRUMlOEIlOUMlRUMlOTUlODQlMjAlRUIlODIlQTglRUMlOUUlOTB8ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Trần</td>
+                                            <td>Safety Management</td>
+                                            <td>43</td>
+                                            <td>Vietnam</td>
+                                            <td>F1</td>
+                                            <td>$2,169</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1592827095305-68f21edefb82?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fDQwYXNpYSUyMG1hbnxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Tatyana Fitzpatrick</td>
+                                            <td>Finishing Works </td>
+                                            <td>36</td>
+                                            <td>Malaysia</td>
+                                            <td>F7</td>
+                                            <td>$1,641</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1661588156316-cdcbe2e0c8ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAyfHwlRUMlOTUlODQlRUMlOEIlOUMlRUMlOTUlODQlMjAlRUIlODIlQTglRUMlOUUlOTB8ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Lê</td>
+                                            <td>Quality Control and Assurance</td>
+                                            <td>27</td>
+                                            <td>Vietnam</td>
+                                            <td>F2</td>
+                                            <td>$1,015</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1610956044066-705bc798dc6c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Kritsada</td>
+                                            <td>Excavation and Earthwork</td>
+                                            <td>29</td>
+                                            <td>Thailand</td>
+                                            <td>F2</td>
+                                            <td>$1,279</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1568585105565-e372998a195d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Chaiporn</td>
+                                            <td>Project Management and Coordination</td>
+                                            <td>34</td>
+                                            <td>Thailand</td>
+                                            <td>F1</td>
+                                            <td>$1,720</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1534814967037-34c47f6533b9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Amit</td>
+                                            <td>Site Preparation</td>
+                                            <td>24</td>
+                                            <td>India</td>
+                                            <td>F1</td>
+                                            <td>$1,320</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1629405552413-f8f92d2a05cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Zhang Tao</td>
+                                            <td>Site Preparation</td>
+                                            <td>35</td>
+                                            <td>China</td>
+                                            <td>F3</td>
+                                            <td>$2,035</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1611413194619-43d598287739?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Ismail</td>
+                                            <td>Structural Construction</td>
+                                            <td>30</td>
+                                            <td>Malaysia</td>
+                                            <td>F2</td>
+                                            <td>$1,821</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1611301040660-6ed87bd2d752?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Huỳnh</td>
+                                            <td>MEP Works (Mechanical, Electrical, Plumbing) </td>
+                                            <td>40</td>
+                                            <td>Vietnam</td>
+                                            <td>B1</td>
+                                            <td>$2,402</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1640113020305-8a269ccadddb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Suraj</td>
+                                            <td>Structural Construction</td>
+                                            <td>34</td>
+                                            <td>India</td>
+                                            <td>B2</td>
+                                            <td>$1,302</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1537107041341-713aaa2a234c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpbmElMjBtYW58ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Li Nar</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>37</td>
+                                            <td>China</td>
+                                            <td>B1</td>
+                                            <td>$2,014</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1565346155927-677a59f169b9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fCVFQyU5RCVCOCVFQiU4RiU4NCUyMCVFQiU4MiVBOCVFQyU5RSU5MHxlbnwwfDB8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Li Jie</td>
+                                            <td>Excavation and Earthwork</td>
+                                            <td>27</td>
+                                            <td>China</td>
+                                            <td>F1</td>
+                                            <td>$1,273</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1661923179246-3edc8e6c7ab2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNoaW5hJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Jose</td>
+                                            <td>Foundation Construction</td>
+                                            <td>34</td>
+                                            <td>Malaysia</td>
+                                            <td>F3</td>
+                                            <td>$1,279</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1612108540619-0b26339142d4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Juan</td>
+                                            <td>Excavation and Earthwork</td>
+                                            <td>28</td>
+                                            <td>Philippines</td>
+                                            <td>B2</td>
+                                            <td>$1,681</td>
+                                          </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1609554259592-2dfe8730f798?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Miguel</td>
+                                            <td>Foundation Construction</td>
+                                            <td>27</td>
+                                            <td>Philippines</td>
+                                            <td>F2</td>
+                                            <td>$1,276</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1585790641228-36685639c56e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Đặng</td>
+                                            <td>MEP Works (Mechanical, Electrical, Plumbing)</td>
+                                            <td>37</td>
+                                            <td>Vietnam</td>
+                                            <td>F4</td>
+                                            <td>$1,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1496135137828-b0b35fc44608?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Amir</td>
+                                            <td>Foundation Construction</td>
+                                            <td>26</td>
+                                            <td>Malaysia</td>
+                                            <td>B1</td>
+                                            <td>$1,810</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1609126396762-542d99fc7a07?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Zhang Min</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>39</td>
+                                            <td>China</td>
+                                            <td>F3</td>
+                                            <td>$2,103</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1681826345569-a675a31f5b7a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHZpZXRuYW0lMjBtYW58ZW58MHx8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Wang Xiuying</td>
+                                            <td>MEP Works (Mechanical, Electrical, Plumbing)</td>
+                                            <td>47</td>
+                                            <td>China</td>
+                                            <td>F5</td>
+                                            <td>$2,951</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://media.istockphoto.com/id/1456949764/ko/%EC%82%AC%EC%A7%84/%EC%99%B8%EB%B6%80-%EC%95%84%EC%8B%9C%EC%95%84-%ED%95%99%EC%83%9D-%EB%8B%A8%EC%B2%B4-%EC%82%AC%EC%A7%84.webp?b=1&s=170667a&w=0&k=20&c=Ohi8SLPXNZD0Zqsp4ngceN9SiN-OEtBW_JK_pk_jydw=" class="profile-image"></td>
+                                            <td>Vinay</td>
+                                            <td>MEP Works (Mechanical, Electrical, Plumbing)</td>
+                                            <td>27</td>
+                                            <td>India</td>
+                                            <td>F5</td>
+                                            <td>$1,450</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1609554259592-2dfe8730f798?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHBoaWxpcHBpbmVzJTIwbWFufGVufDB8MHwwfHx8MA%3D%3D" class="profile-image"></td>
+                                            <td>Manish</td>
+                                            <td>Excavation and Earthwork </td>
+                                            <td>29</td>
+                                            <td>India</td>
+                                            <td>F1</td>
+                                            <td>$1,824</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1464160551369-33c49e545109?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHZpZXRuYW0lMjBtYW58ZW58MHx8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Fernando</td>
+                                            <td>Excavation and Earthwork </td>
+                                            <td>46</td>
+                                            <td>Philippine</td>
+                                            <td>F3</td>
+                                            <td>$3,240</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1541746714029-de3c45147f9c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fHZpZXRuYW0lMjBtYW58ZW58MHx8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Ramon</td>
+                                            <td>Excavation and Earthwork </td>
+                                            <td>47</td>
+                                            <td>Philippine</td>
+                                            <td>F2</td>
+                                            <td>$2,410</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1670390834872-ea474d262251?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fHZpZXRuYW0lMjBtYW58ZW58MHx8MHx8fDA%3D" class="profile-image"></td>
+                                            <td>Rajendra</td>
+                                            <td>Project Management and Coordination</td>
+                                            <td>31</td>
+                                            <td>Nepal</td>
+                                            <td>F8</td>
+                                            <td>$3,046</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://plus.unsplash.com/premium_photo-1683120700497-9dfba6394070?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHZpZXRuYW0lMjBtYW58ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Dipesh</td>
+                                            <td>Planning and Design </td>
+                                            <td>41</td>
+                                            <td>Nepal</td>
+                                            <td>F3</td>
+                                            <td>$1,218</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1473090928358-00fcead4f08c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fHZpZXRuYW0lMjBtYW58ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Kim Hong</td>
+                                            <td>Safety Management</td>
+                                            <td>38</td>
+                                            <td>Korean-Chinese</td>
+                                            <td>F6</td>
+                                            <td>$1,079</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1510056146280-cfea8f3d541d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fHZpZXRuYW0lMjBtYW58ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Choi Young</td>
+                                            <td>Finishing Works</td>
+                                            <td>37</td>
+                                            <td>Korean-Chinese</td>
+                                            <td>F7</td>
+                                            <td>$1,831</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="https://images.unsplash.com/photo-1533578733369-7219f1c25560?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fHZpZXRuYW0lMjBtYW58ZW58MHwwfDB8fHww" class="profile-image"></td>
+                                            <td>Jackson Bradshaw</td>
+                                            <td>Plastic Manufacturing</td>
+                                            <td>Manufacturing</td>
+                                            <td>35</td>
+                                            <td>2023/09/26</td>
+                                            <td>$1,437</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; HITHERE BUSINESS INTELLIGENCE 2024</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>
